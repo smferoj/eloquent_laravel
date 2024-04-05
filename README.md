@@ -75,3 +75,25 @@ public function create(){
     =>controller
       $studentProfile = StudentProfile::with('student')->find(1);
       dd($studentProfile);
+
+## one to many relationship (departments & employees)
+
+=> model (Dept)
+ public function employee(){
+        return $this->hasMany(Employee::class);
+    }
+=>controller 
+ $data = Department::with('employee')->find(1);
+      dd($data);
+    $data = Department::with('employee')->get();
+       dd($data);
+
+## one to many reverse relationship (employees & department)
+
+=> model(Employee)
+public function department(){
+        return $this->belongsTo(Department::class);
+    }
+=>controller 
+$data = Employee::with('department')->get();
+       dd($data);

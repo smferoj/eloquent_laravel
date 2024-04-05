@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +27,10 @@ Route::get('student/delete', [StudentController::class, 'delete']);
 
 
 // =======relationship==========
-
+// one to one
 Route::get('all', [StudentController::class, 'all']);
 
+// one to many 
 
+Route::get('dept/all', [DepartmentController::class, 'all']);
 
