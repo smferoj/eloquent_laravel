@@ -97,3 +97,34 @@ public function department(){
 =>controller 
 $data = Employee::with('department')->get();
        dd($data);
+
+## many to many relationship
+=> create table: php artisan make:migration create_author_book_table
+=> pivot table has no model 
+=> foreign key will be written in pivot table like $table->bigInteger('author_id');
+            $table->bigInteger('book_id') in author-book table;
+
+=> model(Author)
+public function book(){
+        return $this->belongsToMany(Book::class);
+    }
+
+=> model(Book)
+public function author(){
+        return $this->belongsToMany(Author::class);
+    }
+=> controller (all data)
+ public function all(){
+        $atuhors = Author::with('book')->get();
+        dd($atuhors->toArray());
+    }
+=> controller (single data)
+  $atuhor = Author::with('book')->where('id',1)->first();
+        dd($atuhor->toArray());
+
+=> controller (Book wise)
+    public function all(){
+         $books = Book::with('author')->get();
+         dd($books->toArray());
+    }
+

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,4 +34,7 @@ Route::get('all', [StudentController::class, 'all']);
 // one to many 
 
 Route::get('dept/all', [DepartmentController::class, 'all']);
+
+// many to many
+Route::get('home/all', [HomeController::class, 'all']);
 
